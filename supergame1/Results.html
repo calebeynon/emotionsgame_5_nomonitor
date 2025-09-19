@@ -92,36 +92,6 @@
       <b>Your share of earnings is therefore &frac14; x 1.6 x <span style = "color:blue;">{{ gcont }}</span> = {{ pay_share }} ECUs.</b><br>
       <b>Your total earnings are therefore <span style="color:red;">{{ priv }}</span> + &frac14; x 1.6 x <span style = "color:blue;">{{ gcont }}</span> = {{ pay }} ECUs.</b>
     </p><br><br>
-    <h2 style="font-size:24px;">Table of Previous Results</h2>
-     <table border="1" style="font-size:24px;">
-       <tr>
-         <th>Round</th>
-         <th style="width:80px;"></th>
-         {% for label in player_labels %}
-           <th>
-             {% if label == my_label %}
-               <div style="color:red;">(Me)</div>
-             {% endif %}
-             Player {{ label }}
-           </th>
-         {% endfor %}
-       </tr>
-       {% for row in table_data %}
-         <tr>
-           <td rowspan="2" style="vertical-align:middle;">{{ row.round }}</td>
-           <td style="font-style:italic;">Contribution</td>
-           {% for c in row.contributions %}
-             <td>{{ c }} tokens</td>
-           {% endfor %}
-         </tr>
-         <tr>
-           <td style="font-style:italic; background-color:#e0e0e0;">Earnings</td>
-           {% for p in row.payoffs %}
-             <td style="background-color:#e0e0e0;">{{ p }} ECUs</td>
-           {% endfor %}
-         </tr>
-       {% endfor %}
-     </table>
   </div>
 
   <div class="split right">

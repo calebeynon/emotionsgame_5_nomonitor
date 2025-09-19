@@ -74,36 +74,6 @@
     <b>Your share of earnings is therefore &frac14; x 1.6 x <span style = "color:blue;">{{ gcont }}</span> = {{ pay_share }} ECUs.</b><br>
     <b>Your total earnings are therefore <span style="color:red;">{{ priv }}</span> + &frac14; x 1.6 x <span style = "color:blue;">{{ gcont }}</span> = {{ pay }} ECUs.</b>
     </p><br><br>
-  <h2 style="font-size:20px;">Table of Previous Results</h2>
-   <table border="1" style="font-size:16px; max-width: 90%; margin: 0 auto;">
-     <tr>
-       <th style="padding: 6px;">Round</th>
-       <th style="width:60px; padding: 6px;"></th>
-       {% for label in player_labels %}
-         <th style="padding: 6px;">
-           {% if label == my_label %}
-             <div style="color:red;">(Me)</div>
-           {% endif %}
-           Player {{ label }}
-         </th>
-       {% endfor %}
-     </tr>
-     {% for row in table_data %}
-       <tr>
-         <td rowspan="2" style="vertical-align:middle; padding: 6px;">{{ row.round }}</td>
-         <td style="font-style:italic; padding: 4px;">Contribution</td>
-         {% for c in row.contributions %}
-           <td style="padding: 4px;">{{ c }} tokens</td>
-         {% endfor %}
-       </tr>
-       <tr>
-         <td style="font-style:italic; background-color:#e0e0e0; padding: 4px;">Earnings</td>
-         {% for p in row.payoffs %}
-           <td style="background-color:#e0e0e0; padding: 4px;">{{ p }} ECUs</td>
-         {% endfor %}
-       </tr>
-     {% endfor %}
-   </table>
   </div>
 </div>
 {{ endblock }}
