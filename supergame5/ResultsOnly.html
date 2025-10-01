@@ -66,21 +66,23 @@
   <div class="split left">
   <p style="font-size:24px;">
     You placed {{ pcont }} tokens in the Group Account, therefore your Private Account balance is <span style = "color:red;">{{ priv }}</span> tokens.<br>
-    <h3>Previous Group Contributions</h3>
+    <h3>Previous Contributions</h3>
     <table>
       <thead>
         <tr>
           <th>Round</th>
+          <th>My Contribution</th>
           <th>Group Contribution</th>
-          <th>Your Share (¼ × 1.6 × Group)</th>
+          <th>My Earnings</th>
         </tr>
       </thead>
       <tbody>
         {{ for row in table_data }}
         <tr>
           <td>{{ row.round }}</td>
-          <td style="color:blue;">{{ row.group_contribution }}</td>
-          <td>{{ row.individual_share }}</td>
+          <td>{{ row.my_contribution }}</td>
+          <td>{{ row.group_contribution }}</td>
+          <td>{{ row.my_earnings }}</td>
         </tr>
         {{ endfor }}
       </tbody>

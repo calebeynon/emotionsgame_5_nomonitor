@@ -139,14 +139,18 @@ class ResultsOnly(Page):
         players = sorted(player.group.get_players(), key=lambda p: p.id_in_group)
         labels = [p.participant.label for p in players]
     
-        # Build table: one row per round, with aggregated group contribution and individual share
+        # Build table: one row per round, with my contribution, group contribution and my earnings
         table_data = []
         for r in range(1, player.round_number + 1):
             round_group = player.in_round(r).group
+            my_contribution = player.in_round(r).contribution
+            private_balance = 25 - my_contribution
+            my_earnings = private_balance + round_group.individual_share
             row = {
                 'round': r,
+                'my_contribution': int(my_contribution),
                 'group_contribution': int(round_group.total_contribution),
-                'individual_share': round(float(round_group.individual_share), 2)
+                'my_earnings': round(float(my_earnings), 2)
             }
             table_data.append(row)
     
@@ -182,14 +186,18 @@ class Results(Page):
         labels = [p.participant.label for p in players]
         my_label = player.participant.label
 
-        # Build table: one row per round, with aggregated group contribution and individual share
+        # Build table: one row per round, with my contribution, group contribution and my earnings
         table_data = []
         for r in range(1, player.round_number + 1):
             round_group = player.in_round(r).group
+            my_contribution = player.in_round(r).contribution
+            private_balance = 25 - my_contribution
+            my_earnings = private_balance + round_group.individual_share
             row = {
                 'round': r,
+                'my_contribution': int(my_contribution),
                 'group_contribution': int(round_group.total_contribution),
-                'individual_share': round(float(round_group.individual_share), 2)
+                'my_earnings': round(float(my_earnings), 2)
             }
             table_data.append(row)
     
