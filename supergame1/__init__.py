@@ -139,16 +139,14 @@ class ResultsOnly(Page):
         players = sorted(player.group.get_players(), key=lambda p: p.id_in_group)
         labels = [p.participant.label for p in players]
     
-        # Build table: one row per round, with each player's contribution and payoff
+        # Build table: one row per round, with aggregated group contribution and individual share
         table_data = []
         for r in range(1, player.round_number + 1):
-            round_players = player.in_round(r).group.get_players()
-            round_players_sorted = sorted(round_players, key=lambda p: p.id_in_group)
-    
+            round_group = player.in_round(r).group
             row = {
                 'round': r,
-                'contributions': [int(p.in_round(r).contribution) for p in round_players_sorted],
-                'payoffs': [round(float(p.in_round(r).payoff),2) for p in round_players_sorted]
+                'group_contribution': int(round_group.total_contribution),
+                'individual_share': round(float(round_group.individual_share), 2)
             }
             table_data.append(row)
     
@@ -184,16 +182,14 @@ class Results(Page):
         labels = [p.participant.label for p in players]
         my_label = player.participant.label
 
-        # Build table: one row per round, with each player's contribution and payoff
+        # Build table: one row per round, with aggregated group contribution and individual share
         table_data = []
         for r in range(1, player.round_number + 1):
-            round_players = player.in_round(r).group.get_players()
-            round_players_sorted = sorted(round_players, key=lambda p: p.id_in_group)
-    
+            round_group = player.in_round(r).group
             row = {
                 'round': r,
-                'contributions': [int(p.in_round(r).contribution) for p in round_players_sorted],
-                'payoffs': [round(float(p.in_round(r).payoff),2) for p in round_players_sorted]
+                'group_contribution': int(round_group.total_contribution),
+                'individual_share': round(float(round_group.individual_share), 2)
             }
             table_data.append(row)
     
