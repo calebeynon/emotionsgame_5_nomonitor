@@ -84,6 +84,9 @@
   <div class="split left">
     <p style="font-size:24px;">
       You placed {{ pcont }} tokens in the Group Account, therefore your Private Account balance is <span style = "color:red;">{{ priv }}</span> tokens.<br>
+      <b>Your Group Account's balance is <span style="color:blue;">{{ gcont }}</span> tokens.</b><br>
+      <b>Your share of earnings is therefore &frac14; x 1.6 x <span style = "color:blue;">{{ gcont }}</span> = {{ pay_share }} ECUs.</b><br>
+      <b>Your total earnings are therefore <span style="color:red;">{{ priv }}</span> + &frac14; x 1.6 x <span style = "color:blue;">{{ gcont }}</span> = {{ pay }} ECUs.</b>
       <h3>Previous Contributions</h3>
       <table>
         <thead>
@@ -105,9 +108,6 @@
           {{ endfor }}
         </tbody>
       </table>
-      <b>Your Group Account's balance is <span style="color:blue;">{{ gcont }}</span> tokens.</b><br>
-      <b>Your share of earnings is therefore &frac14; x 1.6 x <span style = "color:blue;">{{ gcont }}</span> = {{ pay_share }} ECUs.</b><br>
-      <b>Your total earnings are therefore <span style="color:red;">{{ priv }}</span> + &frac14; x 1.6 x <span style = "color:blue;">{{ gcont }}</span> = {{ pay }} ECUs.</b>
     </p>
   </div>
 
